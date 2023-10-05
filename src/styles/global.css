@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,500&family=DM+Serif+Display&display=swap');
+
+:root {
+    --eggshell: #f4f1de;
+    --delft-blue: #3d405b;
+    --orange: #fd841f;
+    --pumpkin: #ff6f0f;
+    --cambridge-blue: #81b29a;
+    --font-primary: 'DM Serif Display', serif;
+    --font-secondary: 'DM Sans', sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: var(--eggshell);
+}
+
+h1 {
+    color: var(--pumpkin);
+    font-family: var(--font-primary);
+    font-size: 96px;
+    text-align: center;
+    margin: 0;
+}
