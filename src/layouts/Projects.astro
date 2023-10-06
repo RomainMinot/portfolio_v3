@@ -1,5 +1,4 @@
 <section class="projects">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum repellendus deserunt quisquam ipsa quibusdam laborum odit cumque tempore quo corporis, quia nemo est unde deleniti nisi rem aliquid repellat. Voluptate.</p>
 </section>
 
 <script>
@@ -13,10 +12,10 @@
             trigger: ".projects",
             scrub: true,
             start: "top bottom",
-            end: "top center"
+            end: "top center",
         },
-        width: "75%",
-        borderRadius: "25% 25% 0 0"
+        width: "75%"
+        //borderRadius: "25% 25% 0 0"
     });
 </script>
 
@@ -25,12 +24,10 @@
         position: relative;
         background-color: var(--orange);
         left: 50%;
-        transform: translateX(-50%);
-        border-radius: 0;
-        width: 100%;
-        height: 100vh;
-        p {
-            padding: 5rem;
-        }
+        transform: translateX(calc(-50% - 1.5rem));
+        border-radius: 40px;
+        width: calc(100% - 3rem);
+        height: calc(100vh - 3rem);
+        margin: 1.5rem;
     }
 </style>
