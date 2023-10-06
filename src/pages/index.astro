@@ -1,12 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../layouts/Hero.astro';
-import Projects from '../layouts/Projects.astro';
+import Hero from '../components/Hero.astro';
+import Projects from '../components/Projects.astro';
 ---
 
 <Layout title="Romain Minot - Portfolio">
-	<main>
-		<Hero />
-		<Projects />
-	</main>
+	<Hero />
+	<Projects />
 </Layout>
+
+<script>
+	import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+</script>

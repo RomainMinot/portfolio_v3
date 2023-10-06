@@ -1,0 +1,107 @@
+---
+import { Icon } from 'astro-icon';
+---
+
+<section class="hero">
+    <span class="hero__text hero__text--left">Hello, I'm</span>
+	<h1 class="hero__title">Romain Minot</h1>
+	<span class="hero__text hero__text--right">and here is my work!</span>
+    <a class="hero__link" href="/about/">About</a>
+    <div class="hero__indication">
+        <span>Scroll down</span>
+        <Icon name="fluent:arrow-down-20-filled" />
+    </div>
+</section>
+
+<script>
+    /* import { gsap } from "gsap";
+
+    const heroTl = gsap.timeline({});
+    heroTl.to(".hero__title", {opacity: 1, duration: .5}); */
+</script>
+
+<style lang="scss">
+    .hero {
+        position: relative;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 95vh;
+        &__title {
+            opacity: 0;
+        }
+        &__text, &__indication {
+            font-family: var(--font-secondary);
+        }
+        &__text {
+            color: var(--delft-blue);
+            font-size: 24px;
+            font-weight: 300;
+            width: 592px;
+            &--left {
+                text-align: left;
+            }
+            &--right {
+                text-align: right;
+            }
+        }
+        &__indication {
+            position: absolute;
+            bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            gap: .25rem;
+            span {
+                white-space: nowrap;
+                font-weight: 500;
+                color: var(--delft-blue);
+                font-size: 16px;
+            }
+            svg {
+                width: 1rem;
+                color: var(--cambridge-blue);
+                animation: 1s ease-in-out infinite arrow;
+            }
+        }
+        &__link {
+            position: fixed;
+            z-index: 10;
+            left: 2rem;
+            font-size: 16px;
+            text-decoration: none;
+            top: 1.5rem;
+            background-color: var(--orange);
+            font-family: var(--font-secondary);
+            color: var(--eggshell);
+            border-radius: var(--radius);
+            padding: 1rem 2rem;
+            cursor: pointer;
+        }
+    }
+
+    @keyframes arrow {
+        0% {
+           transform: translateY(0);
+        }
+
+        25% {
+            transform: translateY(-1px);
+        }
+
+        50% {
+           transform: translateY(0);
+        }
+
+        75% {
+           transform: translateY(1px);
+        }
+
+        100% {
+            transform: translateY(0px);
+        }
+    }
+</style>

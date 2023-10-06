@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets';
+import testImage from '../images/test.jpg';
+---
+
+<section class="projects">
+    <article class="project">
+        <Image src={testImage} alt="Test image" />
+    </article>
+</section>
+
+<script>
+    import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+    
+    gsap.from(".projects", {
+        scrollTrigger: {
+            trigger: ".projects",
+            scrub: true,
+            start: "top bottom",
+            end: "50% bottom",
+        },
+        width: "75%"
+    });
+</script>
+
+<style lang="scss">
+    .projects {
+        position: relative;
+        background-color: var(--orange);
+        left: calc(50% - 1.5rem);
+        transform: translateX(-50%);
+        border-radius: var(--radius);
+        width: calc(100% - 3rem);
+        height: calc(100vh - 3rem);
+        margin: 1.5rem;
+    }
+
+    .project {
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: var(--radius);
+        overflow: hidden;
+        width: 50%;
+        img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+</style>
