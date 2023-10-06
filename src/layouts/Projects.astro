@@ -1,0 +1,31 @@
+<section class="projects"></section>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from(".projects", {
+        scrollTrigger: {
+            trigger: ".projects",
+            scrub: true,
+            start: "top bottom",
+            end: "top center"
+        },
+        width: "75%",
+        borderRadius: "25% 25% 0 0"
+    });
+</script>
+
+<style lang="scss">
+    .projects {
+        position: relative;
+        background-color: var(--orange);
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 0;
+        width: 100%;
+        height: 100vh;
+    }
+</style>
