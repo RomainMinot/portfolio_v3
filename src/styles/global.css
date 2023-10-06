@@ -26,3 +26,9 @@ h1 {
     text-align: center;
     margin: 0;
 }
+
+p {
+    color: var(--eggshell);
+    font-family: var(--font-secondary);
+    font-size: 16px;
+}
