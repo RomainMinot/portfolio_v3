@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon';
 
 <section class="hero">
     <span class="hero__text hero__text--left">Hello, I'm</span>
-	<h1 class="hero__title">Romain Minot</h1>
+    <h1 class="hero__title">Romain Minot</h1>
 	<span class="hero__text hero__text--right">and here is my work!</span>
     <a class="hero__link" href="/about/">About</a>
     <div class="hero__indication">
@@ -14,10 +14,46 @@ import { Icon } from 'astro-icon';
 </section>
 
 <script>
-    /* import { gsap } from "gsap";
+    import { gsap } from "gsap";
 
-    const heroTl = gsap.timeline({});
-    heroTl.to(".hero__title", {opacity: 1, duration: .5}); */
+    const heroTl = gsap.timeline({
+        delay: .25,
+        duration: .8
+    });
+
+    const title = document.querySelector(".hero__title");
+    if (title && title.textContent) {
+        const titleTransformedText = separateCharactersFromString(title.textContent);
+        title.innerHTML = titleTransformedText;
+        const titleChars = title.querySelectorAll("span");
+
+        titleChars.forEach((char, index) => {
+            char.style.position = "relative";
+
+            heroTl
+            .from(char, {
+                opacity: 0, 
+                top: 100,
+                ease: "Expo.easeOut"
+            }, .075 * index)
+            .to(char, {
+                opacity: 1, 
+                top: 0,
+                delay: .1
+            });
+        });
+    }
+
+    function separateCharactersFromString(stringToSeparate: string): string{
+        let separateString = "";
+        const newString = stringToSeparate.split("");
+
+        for (let i = 0; i < newString.length; i++) {
+            separateString += "<span>" + stringToSeparate[i] + "</span>"
+        }   
+
+        return separateString;
+    }
 </script>
 
 <style lang="scss">
@@ -30,7 +66,8 @@ import { Icon } from 'astro-icon';
         width: 100%;
         height: 95vh;
         &__title {
-            opacity: 0;
+            position: relative;
+            overflow: hidden; 
         }
         &__text, &__indication {
             font-family: var(--font-secondary);

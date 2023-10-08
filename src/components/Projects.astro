@@ -14,16 +14,24 @@ import testImage from '../images/test.jpg';
 	import { ScrollTrigger } from "gsap/ScrollTrigger";
 
     gsap.registerPlugin(ScrollTrigger);
-    
-    gsap.from(".projects", {
+
+    const projects = document.querySelector(".projects");
+    const projectsTl = gsap.timeline({
         scrollTrigger: {
-            trigger: ".projects",
+            trigger: projects,
             scrub: true,
             start: "top bottom",
-            end: "50% bottom",
-        },
-        width: "75%"
+            end: "bottom 50%",
+        }
     });
+    
+    projectsTl
+    .from(projects, {
+        width: "75%"
+    })
+    .to(projects, {
+        width: "calc(100% - 3rem)"
+    })
 </script>
 
 <style lang="scss">
@@ -33,7 +41,6 @@ import testImage from '../images/test.jpg';
         left: calc(50% - 1.5rem);
         transform: translateX(-50%);
         border-radius: var(--radius);
-        width: calc(100% - 3rem);
         height: calc(100vh - 3rem);
         margin: 1.5rem;
     }
