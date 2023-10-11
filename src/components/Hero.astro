@@ -3,10 +3,16 @@ import { Icon } from 'astro-icon';
 ---
 
 <section class="hero">
-    <span class="hero__text hero__text--left">Hello, I'm</span>
+    <div class="hero__text hero__text--left">
+        <span class="hero__text hero__text--left">Hello, I'm</span>
+    </div>
     <h1 class="hero__title">Romain Minot</h1>
-	<span class="hero__text hero__text--right">and here is my work!</span>
-    <a class="hero__link" href="/about/">About</a>
+    <div class="hero__text hero__text--right">
+        <span class="hero__text hero__text--right">and here is my work!</span>
+    </div>
+    <a class="hero__link" href="/about/" data-hover="About">
+        <div>About</div>
+    </a>
     <div class="hero__indication">
         <span>Scroll down</span>
         <Icon name="fluent:arrow-down-20-filled" />
@@ -17,10 +23,11 @@ import { Icon } from 'astro-icon';
     import { gsap } from "gsap";
 
     const heroTl = gsap.timeline({
-        delay: .25,
+        delay: .5,
         duration: .8
     });
 
+    // Title
     const title = document.querySelector(".hero__title");
     if (title && title.textContent) {
         const titleTransformedText = separateCharactersFromString(title.textContent);
@@ -32,17 +39,52 @@ import { Icon } from 'astro-icon';
 
             heroTl
             .from(char, {
-                opacity: 0, 
+                opacity: 0,
                 top: 100,
-                ease: "Expo.easeOut"
-            }, .075 * index)
+                rotate: 22.5,
+                transformOrigin: "left",
+                ease: "power4.out",
+                duration: 1,
+            }, .03 * index)
             .to(char, {
                 opacity: 1, 
                 top: 0,
-                delay: .1
+                rotate: 0,
+                duration: .03,
             });
         });
-    }
+    };
+
+    // Texts
+    const texts = document.querySelectorAll(".hero__text span");
+    heroTl
+    .to(texts, {
+        opacity: 1, 
+        top: 0,
+        rotate: 0,
+        duration: .8,
+        ease: "power4.out"
+    }, "-=.9")
+
+    // Top link
+    const link = document.querySelector(".hero__link");
+    heroTl
+    .to(link, {
+        opacity: 1, 
+        duration: .8,
+        left: "2rem",
+        ease: "power4.out"
+    }, "<.6");
+
+    // Indication scroll
+    const indication = document.querySelector(".hero__indication");
+    heroTl
+    .to(indication, {
+        opacity: 1, 
+        duration: .8,
+        bottom: "1.5rem",
+        ease: "power4.out"
+    }, "<");
 
     function separateCharactersFromString(stringToSeparate: string): string{
         let separateString = "";
@@ -67,16 +109,25 @@ import { Icon } from 'astro-icon';
         height: 95vh;
         &__title {
             position: relative;
-            overflow: hidden; 
+            overflow: hidden;
         }
         &__text, &__indication {
             font-family: var(--font-secondary);
         }
         &__text {
+            overflow: hidden;
             color: var(--delft-blue);
             font-size: 24px;
             font-weight: 300;
             width: 592px;
+            span {
+                position: relative;
+                display: inline-block;
+                opacity: 0;
+                top: -100px;
+                transform: rotate(-22.5deg);
+                transform-origin: left;
+            }
             &--left {
                 text-align: left;
             }
@@ -86,7 +137,8 @@ import { Icon } from 'astro-icon';
         }
         &__indication {
             position: absolute;
-            bottom: 1.5rem;
+            bottom: 2.25rem;
+            opacity: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -107,18 +159,43 @@ import { Icon } from 'astro-icon';
         &__link {
             position: fixed;
             z-index: 10;
-            left: 2rem;
+            left: 1.25rem;
             font-size: 16px;
             text-decoration: none;
             top: 1.5rem;
+            opacity: 0;
             background-color: var(--orange);
             font-family: var(--font-secondary);
             color: var(--eggshell);
             border-radius: var(--radius);
             padding: 1rem 2rem;
             cursor: pointer;
-        }
-    }
+            overflow: hidden;
+            transition: all .3s ease-out;
+            div {
+                transition: all .2s ease-out;
+                transform: translate(0, 0);
+            }
+            &::before {
+                content: attr(data-hover);
+                z-index: 1;
+                position: absolute;
+                color: var(--eggshell);
+                left: 50%;
+                transform: translate(-50%, 50px);
+                transition: all .2s ease-out;
+            }
+            &:hover {
+                transform: scale(1.05);
+            }
+            &:hover div {
+                transform: translate(0, -50px);
+            }
+            &:hover::before {
+                transform: translate(-50%, 0);
+            }
+        }  
+    } 
 
     @keyframes arrow {
         0% {
@@ -126,7 +203,7 @@ import { Icon } from 'astro-icon';
         }
 
         25% {
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
 
         50% {
@@ -134,7 +211,7 @@ import { Icon } from 'astro-icon';
         }
 
         75% {
-           transform: translateY(1px);
+           transform: translateY(2px);
         }
 
         100% {
