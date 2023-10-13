@@ -1,0 +1,59 @@
+---
+interface Props {
+    link: string;
+	text: string;
+}
+
+const { class: className, link, text } = Astro.props;
+---
+
+<a class:list={['button', className]} href={'/' + link} data-hover={text}>
+    <div>{text}</div>
+</a>
+
+<style lang="scss">
+    .button {
+        position: fixed;
+        z-index: 10;
+        font-size: 16px;
+        text-decoration: none;
+        top: 1.5rem;
+        opacity: 0;
+        background-color: var(--orange);
+        font-family: var(--font-secondary);
+        color: var(--eggshell);
+        border-radius: var(--radius);
+        padding: 1rem 2rem;
+        cursor: pointer;
+        overflow: hidden;
+        transition: all .3s ease-out;
+        div {
+            transition: all .2s ease-out;
+            transform: translate(0, 0);
+        }
+        &::before {
+            content: attr(data-hover);
+            z-index: 1;
+            position: absolute;
+            color: var(--eggshell);
+            left: 50%;
+            transform: translate(-50%, 50px);
+            transition: all .2s ease-out;
+        }
+        &:hover {
+            transform: scale(1.05);
+        }
+        &:hover div {
+            transform: translate(0, -50px);
+        }
+        &:hover::before {
+            transform: translate(-50%, 0);
+        }
+        &--left {
+            left: 1.25rem;
+        }
+        &--right {
+            right: 1.25rem;
+        }
+    }  
+</style>

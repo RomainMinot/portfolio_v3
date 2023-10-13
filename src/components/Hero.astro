@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon';
+import Button from './Button.astro';
 ---
 
 <section class="hero">
@@ -10,9 +11,11 @@ import { Icon } from 'astro-icon';
     <div class="hero__text hero__text--right">
         <span class="hero__text hero__text--right">and here is my work!</span>
     </div>
-    <a class="hero__link" href="/about/" data-hover="About">
-        <div>About</div>
-    </a>
+    <Button
+        class="button--left hero__link"
+        link="about"
+        text="About"
+    />
     <div class="hero__indication">
         <span>Scroll down</span>
         <Icon name="fluent:arrow-down-20-filled" />
@@ -21,6 +24,7 @@ import { Icon } from 'astro-icon';
 
 <script>
     import { gsap } from "gsap";
+    import { separateCharactersFromString } from '../scripts/utils.ts';
 
     const heroTl = gsap.timeline({
         delay: .5,
@@ -85,17 +89,6 @@ import { Icon } from 'astro-icon';
         bottom: "1.5rem",
         ease: "power4.out"
     }, "<");
-
-    function separateCharactersFromString(stringToSeparate: string): string{
-        let separateString = "";
-        const newString = stringToSeparate.split("");
-
-        for (let i = 0; i < newString.length; i++) {
-            separateString += "<span>" + stringToSeparate[i] + "</span>"
-        }   
-
-        return separateString;
-    }
 </script>
 
 <style lang="scss">
@@ -156,45 +149,6 @@ import { Icon } from 'astro-icon';
                 animation: 1s ease-in-out infinite arrow;
             }
         }
-        &__link {
-            position: fixed;
-            z-index: 10;
-            left: 1.25rem;
-            font-size: 16px;
-            text-decoration: none;
-            top: 1.5rem;
-            opacity: 0;
-            background-color: var(--orange);
-            font-family: var(--font-secondary);
-            color: var(--eggshell);
-            border-radius: var(--radius);
-            padding: 1rem 2rem;
-            cursor: pointer;
-            overflow: hidden;
-            transition: all .3s ease-out;
-            div {
-                transition: all .2s ease-out;
-                transform: translate(0, 0);
-            }
-            &::before {
-                content: attr(data-hover);
-                z-index: 1;
-                position: absolute;
-                color: var(--eggshell);
-                left: 50%;
-                transform: translate(-50%, 50px);
-                transition: all .2s ease-out;
-            }
-            &:hover {
-                transform: scale(1.05);
-            }
-            &:hover div {
-                transform: translate(0, -50px);
-            }
-            &:hover::before {
-                transform: translate(-50%, 0);
-            }
-        }  
     } 
 
     @keyframes arrow {
