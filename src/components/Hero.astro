@@ -12,7 +12,7 @@ import Button from './Button.astro';
         <span class="hero__text hero__text--right">and here is my work!</span>
     </div>
     <Button
-        class="button--left hero__link"
+        classes={['button--left', 'hero__link']}
         link="about"
         text="About"
     />
@@ -24,7 +24,7 @@ import Button from './Button.astro';
 
 <script>
     import { gsap } from "gsap";
-    import { separateCharactersFromString } from '../scripts/utils.ts';
+    import { separateCharactersFromString } from '../scripts/utils';
 
     const heroTl = gsap.timeline({
         delay: .5,
@@ -45,15 +45,15 @@ import Button from './Button.astro';
             .from(char, {
                 opacity: 0,
                 top: 100,
-                rotate: 22.5,
-                transformOrigin: "left",
+                rotation: 225,
+                transformOrigin: "left 50%",
                 ease: "power4.out",
                 duration: 1,
             }, .03 * index)
             .to(char, {
                 opacity: 1, 
                 top: 0,
-                rotate: 0,
+                rotation: 0,
                 duration: .03,
             });
         });
@@ -146,7 +146,7 @@ import Button from './Button.astro';
             svg {
                 width: 1rem;
                 color: var(--cambridge-blue);
-                animation: 1s ease-in-out infinite arrow;
+                animation: 1s ease-in-out 1.5s infinite arrow;
             }
         }
     } 
@@ -170,6 +170,14 @@ import Button from './Button.astro';
 
         100% {
             transform: translateY(0px);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .hero {
+            &__title {
+                width: 75vw;
+            }
         }
     }
 </style>

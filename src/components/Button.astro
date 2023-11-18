@@ -1,13 +1,14 @@
 ---
 interface Props {
+    classes: Array<string>;
     link: string;
 	text: string;
 }
 
-const { class: className, link, text } = Astro.props;
+const { classes, link, text } = Astro.props;
 ---
 
-<a class:list={['button', className]} href={'/' + link} data-hover={text}>
+<a class="button" class:list={classes} href={'/' + link} data-hover={text}>
     <div>{text}</div>
 </a>
 

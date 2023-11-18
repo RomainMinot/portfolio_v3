@@ -19,6 +19,7 @@
 html, body {
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 html {
@@ -37,4 +38,10 @@ p {
     color: var(--delft-blue);
     font-family: var(--font-secondary);
     font-size: 16px;
+}
+
+@media (max-width: 640px) {
+    h1 {
+        font-size: 65px;
+    }
 }

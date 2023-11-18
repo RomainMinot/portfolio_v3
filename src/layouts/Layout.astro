@@ -19,15 +19,20 @@ const { title, name } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body data-barba="wrapper">
+	<!-- <body data-barba="wrapper">
 		<main data-barba="container" data-barba-namespace={name}>
+			<slot />
+		</main>
+	</body> -->
+	<body>
+		<main>
 			<slot />
 		</main>
 	</body>
 </html>
 
 <script>
-	import barba from '@barba/core';
+	/* import barba from '@barba/core';
 	import { gsap } from 'gsap';
 
 	barba.init({
@@ -44,5 +49,5 @@ const { title, name } = Astro.props;
 				});
 			}
 		}]
-	});
+	}); */
 </script>
