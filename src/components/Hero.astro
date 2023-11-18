@@ -175,8 +175,17 @@ import Button from './Button.astro';
 
     @media (max-width: 640px) {
         .hero {
+            height: 90svh;
             &__title {
                 width: 75vw;
+            }
+            &__text {
+                text-align: center;
+                font-size: 22px;
+                width: 60vw;
+                &--right {
+                    margin-top: .5rem;
+                }
             }
         }
     }
