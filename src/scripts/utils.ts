@@ -2,7 +2,7 @@
  * @param stringToSeparate
  * @returns 
  */
-export function separateCharactersFromString(stringToSeparate: string): string{
+export function separateCharactersFromString(stringToSeparate: string): string {
     let separateString = "";
     const newString = stringToSeparate.split("");
 
