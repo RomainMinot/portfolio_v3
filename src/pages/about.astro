@@ -5,8 +5,8 @@ import Button from '../components/Button.astro';
 
 <Layout title="About - Romain Minot" name="about">
 	<h1>About me</h1>
-    <div>
-        <p>My name is Romain Minot, I am 24 years old and I have a DUT MMI (University Diploma of Technology in multimedia and communication). This year, I am attending a bachelor degree in Sensory Webdesign and online creation strategies at Limoges in France.</p>
+    <div class="about__text">
+        <p>My name is Romain Minot, I am 25 years old and I have a DUT MMI (University Diploma of Technology in multimedia and communication). This year, I am attending a bachelor degree in Sensory Webdesign and online creation strategies at Limoges in France.</p>
         <p>I enjoy creating and developing website interfaces. After my degree, I would like to become a frontend developer. I am fond of pop culture and particularly movies like Blade Runner or Seven to name just a few.</p>
         <p>I have also been playing basketball since 8 years. This sport permit me to progress with other people while being attentive at their remarks. This Portfolio gather some creations that I made in class or during my spare time.</p>
     </div>
@@ -38,6 +38,12 @@ import Button from '../components/Button.astro';
 
 <style lang="scss">
     .about {
-
+        &__text {
+            margin-top: 3rem;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+            max-width: 75vw;
+        }
     }
 </style>

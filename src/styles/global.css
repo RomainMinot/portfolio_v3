@@ -1,19 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,500&family=DM+Serif+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-    --eggshell: #f4f1de;
-    --delft-blue: #3d405b;
-    --orange: #fd841f;
-    --pumpkin: #ff6f0f;
-    --cambridge-blue: #81b29a;
-    --font-primary: 'DM Serif Display', serif;
-    --font-secondary: 'DM Sans', sans-serif;
+    --light-green: #daf7dc;
+    --dark-blue: #2F4858;
+    --light-blue: #86BBD8;
+    --green: #9EE493;
+    --blue: #336699;
+    --font-primary: 'Bricolage Grotesque', serif;
+    --font-secondary: 'Noto Sans Display', sans-serif;
     --radius: 40px;
 }
 
 *::selection {
-    background-color: var(--cambridge-blue);
-    color: var(--eggshell);
+    background-color: var(--light-blue);
+    color: var(--light-green);
 }
 
 html, body {
@@ -23,11 +23,11 @@ html, body {
 }
 
 html {
-    background-color: var(--eggshell);
+    background-color: var(--light-green);
 }
 
 h1 {
-    color: var(--pumpkin);
+    color: var(--blue);
     font-family: var(--font-primary);
     font-size: 96px;
     text-align: center;
@@ -35,7 +35,7 @@ h1 {
 }
 
 p {
-    color: var(--delft-blue);
+    color: var(--dark-blue);
     font-family: var(--font-secondary);
     font-size: 16px;
 }
